@@ -1,17 +1,21 @@
 import React from "react";
 import { ItemContainer } from "./styles";
 
-function ItemRepo(){
+function ItemRepo({repo, handleRemoveRepo}){
+    const handleRemove= () => {
+        handleRemoveRepo(repo.id);
+    }
+
     return(
-        <ItemContainer>
+        <ItemContainer onClick={handleRemove}>
             <h3>
-                Pablo
+                {repo.name}
             </h3>
             <p>
-                dio/pablo
+                {repo.full_name}
             </p>
-            <a href="#">Ver epositório</a><br/>
-            <a href="#" className="remover">Remover</a>
+            <a href={repo.html_url} rel="noreferrer" target="_blank">Ver epositório</a><br/>
+            <a href="#" repo_id={repo.id} rel="noreferrer" className="remover">Remover</a>
             <hr/>
         </ItemContainer>
     )
